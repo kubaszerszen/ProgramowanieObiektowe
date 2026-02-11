@@ -1,0 +1,15 @@
+C:\Users\kubas\source\repos\HotelSystem\HotelSystem\bin\Debug\net8.0\HotelSystem.exe
+C:\Users\kubas\source\repos\HotelSystem\HotelSystem\bin\Debug\net8.0\HotelSystem.deps.json
+C:\Users\kubas\source\repos\HotelSystem\HotelSystem\bin\Debug\net8.0\HotelSystem.runtimeconfig.json
+C:\Users\kubas\source\repos\HotelSystem\HotelSystem\bin\Debug\net8.0\HotelSystem.dll
+C:\Users\kubas\source\repos\HotelSystem\HotelSystem\bin\Debug\net8.0\HotelSystem.pdb
+C:\Users\kubas\source\repos\HotelSystem\HotelSystem\obj\Debug\net8.0\HotelSystem.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kubas\source\repos\HotelSystem\HotelSystem\obj\Debug\net8.0\HotelSystem.AssemblyInfoInputs.cache
+C:\Users\kubas\source\repos\HotelSystem\HotelSystem\obj\Debug\net8.0\HotelSystem.AssemblyInfo.cs
+C:\Users\kubas\source\repos\HotelSystem\HotelSystem\obj\Debug\net8.0\HotelSystem.csproj.CoreCompileInputs.cache
+C:\Users\kubas\source\repos\HotelSystem\HotelSystem\obj\Debug\net8.0\HotelSystem.sourcelink.json
+C:\Users\kubas\source\repos\HotelSystem\HotelSystem\obj\Debug\net8.0\HotelSystem.dll
+C:\Users\kubas\source\repos\HotelSystem\HotelSystem\obj\Debug\net8.0\refint\HotelSystem.dll
+C:\Users\kubas\source\repos\HotelSystem\HotelSystem\obj\Debug\net8.0\HotelSystem.pdb
+C:\Users\kubas\source\repos\HotelSystem\HotelSystem\obj\Debug\net8.0\HotelSystem.genruntimeconfig.cache
+C:\Users\kubas\source\repos\HotelSystem\HotelSystem\obj\Debug\net8.0\ref\HotelSystem.dll
