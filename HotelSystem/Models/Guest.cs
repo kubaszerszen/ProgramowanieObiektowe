@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace HotelSystem.Models
 {
-    internal class Guest
+    public class Guest : Person
     {
+        public string? PhoneNumber { get; set; }
+        public string? Email { get; set; }
+
     }
 }

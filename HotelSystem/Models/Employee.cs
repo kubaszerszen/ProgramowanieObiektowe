@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace HotelSystem.Models
 {
-    internal class Employee
+    public class Employee : Person
     {
+        public decimal Salary { get; set; }
+
     }
 }

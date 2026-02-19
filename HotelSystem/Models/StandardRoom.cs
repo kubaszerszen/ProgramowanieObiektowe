@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace HotelSystem.Models
 {
-    internal class StandardRoom
+    public class StandardRoom : Room
     {
+        public int NumberOfBeds { get; set; }
+
+        public bool HasBalcony { get; set; } = false;
     }
 }

@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace HotelSystem.Models
 {
-    internal class VipRoom
+    public class VipRoom : Room
     {
+        public bool HasJacuzzi { get; set; }
+        public bool HasMiniBar { get; set; }
+
     }
+
 }
