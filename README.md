@@ -17,7 +17,6 @@ Projekt zaawansowanego systemu do obsługi hotelu, zrealizowany w technologii **
 
 1. **Baza danych:** * Uruchom plik `HotelDatabase.sql` w MSSQL.
    * skrypt utworzy bazę `HotelDb`, tabele oraz zasili je danymi testowymi.
-   * Jeśli podczas uruchamiania skryptu wystąpi błąd, należy w pliku .sql odnaleźć początkową sekcję CREATE DATABASE i zmienić ścieżki do plików .mdf i .ldf na zgodne z Twoją instalacją SQL Server.
 2. **Konfiguracja połączenia:** * Otwórz projekt w Visual Studio 2022 za pomocą pliku `HotelSystem.sln`.
 W razie potrzeby dostosowania aplikacji do własnej instancji SQL Server, zmień parametr Server w pliku Program.cs w linii definicji ConnectionString.
      ```csharp
