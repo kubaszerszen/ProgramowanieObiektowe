@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static HotelSystem.Program;
 
 namespace HotelSystem.Data
 {
     public class SqlGuestRepository : IGuestRepository
     {
-        private readonly string _connString = @"Server=.\SQLEXPRESS;Database=HotelDb;Trusted_Connection=True;TrustServerCertificate=True;";
+        private readonly string _connString = DatabaseConfig.ConnectionString;
 
         public void AddGuest(Guest guest)
         {

@@ -8,6 +8,12 @@ namespace HotelSystem
 {
     class Program
     {
+        public static class DatabaseConfig
+        {
+            // w razie problemów z połączeniem, sprawdź czy nazwa instancji jest poprawna
+            public static string ConnectionString { get; } =
+                @"Server=.\SQLEXPRESS;Database=HotelDb;Trusted_Connection=True;TrustServerCertificate=True;";
+        }
         static void Main(string[] args)
         {
             try
