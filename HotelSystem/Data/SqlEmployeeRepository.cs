@@ -5,13 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static HotelSystem.Program;
+using HotelSystem;
 
 namespace HotelSystem.Data
 {
     internal class SqlEmployeeRepository : IEmployeeRepository
     {
-        private readonly string _connString = DatabaseConfig.ConnectionString;
+        private readonly string _connString = Program.DatabaseConfig.ConnectionString;
 
         public void AddEmployee(Employee emp)
         {

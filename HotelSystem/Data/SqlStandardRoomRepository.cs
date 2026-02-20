@@ -5,13 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static HotelSystem.Program;
+using HotelSystem;
 
 namespace HotelSystem.Data
 {
     public class SqlStandardRoomRepository : IStandardRoomRepository
     {
-        private readonly string _connString = DatabaseConfig.ConnectionString;
+        private readonly string _connString = Program.DatabaseConfig.ConnectionString;
         public void AddStandardRoom(StandardRoom room)
         {
             using var conn = new SqlConnection(_connString);
