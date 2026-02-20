@@ -1,6 +1,6 @@
 # 🏨 System Zarządzania Rezerwacjami Hotelowymi (CRUD)
 
-Projekt zaawansowanego systemu do obsługi hotelu, zrealizowany w technologii **C#** oraz **Microsoft SQL Server**. Aplikacja pozwala na pełne zarządzanie bazą gości, pokoi oraz procesem rezerwacji przy użyciu paradygmatu programowania obiektowego.
+Projekt zaawansowanego systemu do obsługi hotelu, zrealizowany w technologii **C#** oraz **Microsoft SQL Server**. Aplikacja pozwala na pełne zarządzanie bazą gości, pokoi oraz procesem rezerwacji..
 
 ## 🚀 Kluczowe Funkcjonalności
 * 🏨 **Zarządzanie Rezerwacjami:** przypisywanie gości do pokoi w terminach.
