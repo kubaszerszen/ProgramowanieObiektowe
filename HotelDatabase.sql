@@ -1,0 +1,260 @@
+﻿USE [master]
+GO
+/****** Object:  Database [HotelDb]    Script Date: 19.02.2026 11:17:05 ******/
+CREATE DATABASE [HotelDb]
+GO
+USE [HotelDb]
+GO
+ALTER DATABASE [HotelDb] SET COMPATIBILITY_LEVEL = 160
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [HotelDb].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [HotelDb] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [HotelDb] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [HotelDb] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [HotelDb] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [HotelDb] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [HotelDb] SET AUTO_CLOSE ON 
+GO
+ALTER DATABASE [HotelDb] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [HotelDb] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [HotelDb] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [HotelDb] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [HotelDb] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [HotelDb] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [HotelDb] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [HotelDb] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [HotelDb] SET  ENABLE_BROKER 
+GO
+ALTER DATABASE [HotelDb] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [HotelDb] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [HotelDb] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [HotelDb] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [HotelDb] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [HotelDb] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [HotelDb] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [HotelDb] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [HotelDb] SET  MULTI_USER 
+GO
+ALTER DATABASE [HotelDb] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [HotelDb] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [HotelDb] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [HotelDb] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [HotelDb] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [HotelDb] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+ALTER DATABASE [HotelDb] SET QUERY_STORE = ON
+GO
+ALTER DATABASE [HotelDb] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEANUP_POLICY = (STALE_QUERY_THRESHOLD_DAYS = 30), DATA_FLUSH_INTERVAL_SECONDS = 900, INTERVAL_LENGTH_MINUTES = 60, MAX_STORAGE_SIZE_MB = 1000, QUERY_CAPTURE_MODE = AUTO, SIZE_BASED_CLEANUP_MODE = AUTO, MAX_PLANS_PER_QUERY = 200, WAIT_STATS_CAPTURE_MODE = ON)
+GO
+USE [HotelDb]
+GO
+/****** Object:  Table [dbo].[Employees]    Script Date: 19.02.2026 11:17:06 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Employees](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[FirstName] [varchar](100) NOT NULL,
+	[LastName] [varchar](100) NOT NULL,
+	[Pesel] [varchar](11) NOT NULL,
+	[Salary] [decimal](10, 2) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Guests]    Script Date: 19.02.2026 11:17:06 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Guests](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[FirstName] [nvarchar](100) NOT NULL,
+	[LastName] [nvarchar](100) NOT NULL,
+	[Email] [nvarchar](255) NULL,
+	[Phone] [varchar](20) NULL,
+	[Pesel] [varchar](11) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Payments]    Script Date: 19.02.2026 11:17:06 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Payments](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ReservationId] [int] NOT NULL,
+	[Amount] [decimal](18, 2) NOT NULL,
+	[PaymentDate] [datetime] NOT NULL,
+	[Method] [varchar](50) NULL,
+	[IsPaid] [bit] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Reservations]    Script Date: 19.02.2026 11:17:06 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Reservations](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[GuestId] [int] NOT NULL,
+	[EmployeeId] [int] NOT NULL,
+	[RoomId] [int] NOT NULL,
+	[RoomType] [varchar](20) NOT NULL,
+	[StartDate] [datetime] NOT NULL,
+	[EndDate] [datetime] NOT NULL,
+	[TotalPrice] [decimal](18, 2) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[StandardRooms]    Script Date: 19.02.2026 11:17:06 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[StandardRooms](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Number] [int] NOT NULL,
+	[Capacity] [int] NOT NULL,
+	[IsAvailable] [bit] NOT NULL,
+	[BasePrice] [int] NOT NULL,
+	[NumberOfBeds] [int] NOT NULL,
+	[HasBalcony] [bit] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[VipRooms]    Script Date: 19.02.2026 11:17:06 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[VipRooms](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Number] [int] NOT NULL,
+	[Capacity] [int] NOT NULL,
+	[IsAvailable] [bit] NOT NULL,
+	[BasePrice] [int] NOT NULL,
+	[HasJacuzzi] [bit] NOT NULL,
+	[HasMiniBar] [bit] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Employees] ON 
+
+INSERT [dbo].[Employees] ([Id], [FirstName], [LastName], [Pesel], [Salary]) VALUES (1, N'kuba', N'kubso', N'14055566621', CAST(4000.00 AS Decimal(10, 2)))
+INSERT [dbo].[Employees] ([Id], [FirstName], [LastName], [Pesel], [Salary]) VALUES (2, N'albert', N'poka', N'12343323354', CAST(5500.00 AS Decimal(10, 2)))
+INSERT [dbo].[Employees] ([Id], [FirstName], [LastName], [Pesel], [Salary]) VALUES (3, N'Andrzej', N'Wron', N'06212354321', CAST(5600.00 AS Decimal(10, 2)))
+INSERT [dbo].[Employees] ([Id], [FirstName], [LastName], [Pesel], [Salary]) VALUES (4, N'Józef', N'Bors', N'01242538920', CAST(6000.00 AS Decimal(10, 2)))
+SET IDENTITY_INSERT [dbo].[Employees] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Guests] ON 
+
+INSERT [dbo].[Guests] ([Id], [FirstName], [LastName], [Email], [Phone], [Pesel]) VALUES (4, N'julka', N'somon', N'julka@gmail.com', N'565000988', N'10222455567')
+INSERT [dbo].[Guests] ([Id], [FirstName], [LastName], [Email], [Phone], [Pesel]) VALUES (5, N'jan', N'pogda', N'jan@gmail.com', N'345543678', N'98777765634')
+INSERT [dbo].[Guests] ([Id], [FirstName], [LastName], [Email], [Phone], [Pesel]) VALUES (6, N'andrzej', N'tomas', N'andrzej@interia.pl', N'444333222', N'56708997765')
+INSERT [dbo].[Guests] ([Id], [FirstName], [LastName], [Email], [Phone], [Pesel]) VALUES (7, N'Amelia', N'Buk', N'Amelia@gmail.com', N'793221432', N'23443223421')
+INSERT [dbo].[Guests] ([Id], [FirstName], [LastName], [Email], [Phone], [Pesel]) VALUES (9, N'Jakub', N'Szerszen', N'Jakub@gmail.com', N'445332564', N'06212304514')
+SET IDENTITY_INSERT [dbo].[Guests] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Payments] ON 
+
+INSERT [dbo].[Payments] ([Id], [ReservationId], [Amount], [PaymentDate], [Method], [IsPaid]) VALUES (6, 5, CAST(4800.00 AS Decimal(18, 2)), CAST(N'2026-02-17T10:37:26.987' AS DateTime), N'BLIK', 1)
+INSERT [dbo].[Payments] ([Id], [ReservationId], [Amount], [PaymentDate], [Method], [IsPaid]) VALUES (7, 6, CAST(1500.00 AS Decimal(18, 2)), CAST(N'2026-02-17T10:54:37.867' AS DateTime), N'Karta', 1)
+INSERT [dbo].[Payments] ([Id], [ReservationId], [Amount], [PaymentDate], [Method], [IsPaid]) VALUES (8, 7, CAST(4000.00 AS Decimal(18, 2)), CAST(N'2026-02-18T12:46:21.810' AS DateTime), N'BLIK', 1)
+SET IDENTITY_INSERT [dbo].[Payments] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Reservations] ON 
+
+INSERT [dbo].[Reservations] ([Id], [GuestId], [EmployeeId], [RoomId], [RoomType], [StartDate], [EndDate], [TotalPrice]) VALUES (5, 4, 2, 1, N'Vip', CAST(N'2026-02-15T00:00:00.000' AS DateTime), CAST(N'2026-02-18T00:00:00.000' AS DateTime), CAST(4800.00 AS Decimal(18, 2)))
+INSERT [dbo].[Reservations] ([Id], [GuestId], [EmployeeId], [RoomId], [RoomType], [StartDate], [EndDate], [TotalPrice]) VALUES (6, 6, 2, 1, N'Standard', CAST(N'2026-03-15T00:00:00.000' AS DateTime), CAST(N'2026-03-18T00:00:00.000' AS DateTime), CAST(1500.00 AS Decimal(18, 2)))
+INSERT [dbo].[Reservations] ([Id], [GuestId], [EmployeeId], [RoomId], [RoomType], [StartDate], [EndDate], [TotalPrice]) VALUES (7, 9, 4, 4, N'Vip', CAST(N'2026-02-20T00:00:00.000' AS DateTime), CAST(N'2026-02-25T00:00:00.000' AS DateTime), CAST(4000.00 AS Decimal(18, 2)))
+SET IDENTITY_INSERT [dbo].[Reservations] OFF
+GO
+SET IDENTITY_INSERT [dbo].[StandardRooms] ON 
+
+INSERT [dbo].[StandardRooms] ([Id], [Number], [Capacity], [IsAvailable], [BasePrice], [NumberOfBeds], [HasBalcony]) VALUES (1, 101, 8, 1, 500, 3, 1)
+INSERT [dbo].[StandardRooms] ([Id], [Number], [Capacity], [IsAvailable], [BasePrice], [NumberOfBeds], [HasBalcony]) VALUES (3, 103, 4, 1, 250, 2, 1)
+SET IDENTITY_INSERT [dbo].[StandardRooms] OFF
+GO
+SET IDENTITY_INSERT [dbo].[VipRooms] ON 
+
+INSERT [dbo].[VipRooms] ([Id], [Number], [Capacity], [IsAvailable], [BasePrice], [HasJacuzzi], [HasMiniBar]) VALUES (1, 303, 4, 1, 600, 1, 1)
+INSERT [dbo].[VipRooms] ([Id], [Number], [Capacity], [IsAvailable], [BasePrice], [HasJacuzzi], [HasMiniBar]) VALUES (2, 102, 8, 1, 300, 1, 0)
+INSERT [dbo].[VipRooms] ([Id], [Number], [Capacity], [IsAvailable], [BasePrice], [HasJacuzzi], [HasMiniBar]) VALUES (3, 302, 6, 1, 1000, 1, 0)
+INSERT [dbo].[VipRooms] ([Id], [Number], [Capacity], [IsAvailable], [BasePrice], [HasJacuzzi], [HasMiniBar]) VALUES (4, 304, 6, 1, 800, 1, 0)
+SET IDENTITY_INSERT [dbo].[VipRooms] OFF
+GO
+ALTER TABLE [dbo].[Payments] ADD  DEFAULT ('Karta') FOR [Method]
+GO
+ALTER TABLE [dbo].[Payments] ADD  DEFAULT ((0)) FOR [IsPaid]
+GO
+ALTER TABLE [dbo].[Payments]  WITH CHECK ADD FOREIGN KEY([ReservationId])
+REFERENCES [dbo].[Reservations] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Reservations]  WITH CHECK ADD  CONSTRAINT [FK_Reservations_Employees] FOREIGN KEY([EmployeeId])
+REFERENCES [dbo].[Employees] ([Id])
+GO
+ALTER TABLE [dbo].[Reservations] CHECK CONSTRAINT [FK_Reservations_Employees]
+GO
+ALTER TABLE [dbo].[Reservations]  WITH CHECK ADD  CONSTRAINT [FK_Reservations_Guests] FOREIGN KEY([GuestId])
+REFERENCES [dbo].[Guests] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Reservations] CHECK CONSTRAINT [FK_Reservations_Guests]
+GO
+USE [master]
+GO
+ALTER DATABASE [HotelDb] SET  READ_WRITE 
+GO
+
